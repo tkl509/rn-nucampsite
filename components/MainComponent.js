@@ -22,8 +22,7 @@ const DirectoryNavigator = createStackNavigator (
                 />
             })
          },
-        CampsiteInfo: { screen: CampsiteInfo },
-        About: { screen: About }
+        CampsiteInfo: { screen: CampsiteInfo }
     },
     {
         initialRouteName: 'Directory',
@@ -154,20 +153,6 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
          },
-        About: { 
-            screen: AboutNavigator,
-            navigationOptions: {
-                drawerLabel: 'About Us',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='info-circle'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-         },
         Contact: { 
             screen: ContactNavigator,
             navigationOptions: {
@@ -181,7 +166,21 @@ const MainNavigator = createDrawerNavigator(
                     />
                 )
             }
-        }
+        },
+        About: { 
+            screen: AboutNavigator,
+            navigationOptions: {
+                drawerLabel: 'About Us',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='info-circle'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+         }
     },
     {
         drawerBackgroundColor: '#CEC8FF',
