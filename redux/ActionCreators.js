@@ -1,6 +1,17 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
+export const postFavorite = campsideId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(campsideId));
+    }, 2000);
+};
+
+export const addFavorite = campsideId  => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: campsideId
+});
+
 export const fetchComments = () => dispatch => {
     return fetch(baseUrl + 'comments')
         .then(response => {
