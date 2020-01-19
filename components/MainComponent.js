@@ -30,7 +30,7 @@ const ReservationNavigator = createStackNavigator(
                 backgroundColor: '#5637DD'
             },
             headerTintColor: '#fff',
-            headerStyle: {
+            headerTitleStyle: {
                 color: '#fff'
             },
             headerLeft: <Icon

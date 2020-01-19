@@ -28,11 +28,11 @@ function RenderComments({comments}) {
             <View style={{margin: 10}}>
                 <Text style={{fontSize: 14}}>{item.text}</Text>
                 <Rating
-                        style={{alignItems: 'flex-start', paddingVertical: '5%'}}
-                        readonly
-                        startingValue={item.rating}
-                        imageSize={10}
-                    />
+                    style={{alignItems: 'flex-start', paddingVertical: '5%'}}
+                    readonly
+                    startingValue={item.rating}
+                    imageSize={10}
+                />
                 <Text style={{fontSize: 12}}>{`--${item.author}, ${item.date}`}</Text>
             </View>
         );
@@ -58,6 +58,8 @@ function RenderCampsite(props) {
     handleViewRef = ref => this.view = ref;
 
     const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
+
+    const recognizeComment = ({dx}) => (dx > 200) ? true : false;
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
@@ -85,6 +87,8 @@ function RenderCampsite(props) {
                 ],
                 { cancelable: false }
                 );
+            } else if (recognizeComment(gestureState)) {
+                props.onShowModal();
             }
             return true;
         }
@@ -208,7 +212,7 @@ class CampsiteInfo extends Component {
                             onChangeText={(comment)=>this.setState({text: comment})}
                             value={this.state.text}
                         />
-                        <View>
+                        <View style={{margin: 10}}>
                             <Button
                                 onPress={() => {
                                     this.handleComment(campsiteId, this.state.rating, this.state.author, this.state.text)
